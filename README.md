@@ -63,3 +63,5 @@ eksctl create cluster --name temperature-service --region eu-central-1 --nodes 2
 kubectl apply -f kubernetes/config
 kubectl apply -f kubernetes/app
 ```
+
+- To make the API externally accessible, configure an [Ingress Resource](https://kubernetes.io/docs/concepts/services-networking/ingress/) and apply it.

@@ -7,7 +7,7 @@ endef
 
 define run_test_command
 	docker-compose -f test.docker-compose.yml run service bash -c $(1) ; \
-	docker-compose -f docker-compose.yml -f test.docker-compose.yml down --remove-orphans
+	docker-compose -f test.docker-compose.yml down --remove-orphans
 endef
 
 # Manage db migrations with alembic. TODO: Ensure generated index doesn't get deleted.
