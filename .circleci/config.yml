@@ -15,7 +15,7 @@ jobs:
 
       - run:
           name: Run Unit Tests
-          command: make test
+          command: make build && make test
 
   deploy:
     docker:
