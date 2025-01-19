@@ -1,3 +1,6 @@
+KUB_CONGIG_FILES = kubernetes/config
+KUB_FILES = kubernetes/app
+
 define run_development_command
 	docker-compose -f docker-compose.yml run service bash -c $(1)
 endef
@@ -27,3 +30,13 @@ test:
 .PHONY: run
 run: 
 	docker-compose -f docker-compose.yml up
+
+.PHONY: kub_apply
+kub_apply:
+	kubectl apply -f $(KUB_CONGIG_FILES)
+	kubectl apply -f $(KUB_FILES)
+
+.PHONY: kub_delete
+kub_delete:
+	kubectl delete -f $(KUB_FILES)
+	kubectl delete -f $(KUB_CONGIG_FILES)
