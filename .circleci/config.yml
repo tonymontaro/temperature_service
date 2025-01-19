@@ -1,0 +1,42 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+
+      - setup_remote_docker:
+          version: 20.10.14
+
+      - run:
+          name: Install docker-compose
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y docker-compose
+
+      - run:
+          name: Run Unit Tests
+          command: make test
+
+  deploy:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: Deploy
+          command: echo "Deployed to production!"
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: main
