@@ -24,7 +24,7 @@ def test_posts_temperature_for_a_sensor():
     response = client.post("/temperatures", json=payload)
     assert response.status_code == 201
 
-def test_gets_average_temperature_for_unknown_room():
+def test_raises_404_for_unknown_room():
     response = client.get(
         "/temperatures/average",
         params={"building": "UnknownB", "room": "UnknownR"}
