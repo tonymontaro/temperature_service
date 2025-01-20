@@ -25,13 +25,13 @@ def test_posts_temperature_for_a_sensor():
     assert response.status_code == 201
 
 def test_gets_average_temperature_for_unknown_room():
-    response = client.get("/temperatures/average", params={"building": "UnknownB", "room": "UnknownR"})
-    assert response.status_code == 200
+    response = client.get(
+        "/temperatures/average",
+        params={"building": "UnknownB", "room": "UnknownR"}
+    )
+    assert response.status_code == 404
     data = response.json()
-    assert data["buildingId"] == "UnknownB"
-    assert data["roomId"] == "UnknownR"
-    # No data for unknown Room/Building, averageTemperature should be 0. Alternatively, could return 404
-    assert data["averageTemperature"] == 0.0
+    assert data["detail"] == "No temperature readings found for the specified room or timeframe."
 
 def test_gets_correct_average_for_single_reading():
     building = "B2"
@@ -82,7 +82,6 @@ def test_missing_required_query_params():
 def test_invalid_post_payload():
     invalid_payload = {
         "buildingId": "B1",
-        # Missing roomId, sensorId, temperature, timestamp
     }
     response = client.post("/temperatures", json=invalid_payload)
     assert response.status_code == 422

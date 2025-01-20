@@ -5,7 +5,7 @@ class TemperatureReading(BaseModel):
     buildingId: str
     roomId: str
     sensorId: str
-    temperature: float = Field(description="Temperature in Celsius", example=23.5)
+    temperature: float = Field(description="Temperature in Celsius", example=23.5, ge=-88, le=58)
     timestamp: int = Field(description="Epoch timestamp in milliseconds", example=int(datetime.now(timezone.utc).timestamp() * 1000))
 
 
