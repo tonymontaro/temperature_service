@@ -2,7 +2,7 @@
 
 ### Build and Test
 
-Ensure that you have [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) installed.
+Ensure that you have [Docker](https://docs.docker.com/get-started/) and [Docker Compose](https://docs.docker.com/compose/) installed.
 
 ```sh
 make build
@@ -21,7 +21,7 @@ The app docs will be available on http://localhost:8000/docs
 
 ### Local machine kubernetes deployment
 
-Ensure you have [Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fmacos%2Farm64%2Fstable%2Fbinary+download) installed.
+Ensure you have [Minikube](https://minikube.sigs.k8s.io/docs/start/) installed.
 
 Rename the file `secret.yaml.example` (found in the folder kubernetes/config/) to `secret.yaml`, and replace `TIMESCALE_DB_URL_IN_BASE64` with your actual timescaledb url (NOTE: the url should start with postgresql and converted to base64). You can get the url to a managed timescale db [here](https://console.cloud.timescale.com/signup) (free for 30 days).
 
