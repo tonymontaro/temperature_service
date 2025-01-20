@@ -77,6 +77,24 @@ CI/CD is currently set up using CircleCI. When code is pushed, tests are run aut
 - This service focuses on temperature data. Although the design is flexible enough to allow for additional data-points like Pressure, Humidity etc.
 - A room can have many sensors (from one to possibly thousands of sensors).
 
+### Choice of Python Framework
+
+FastAPI was selected for the following reasons:
+
+- High Performance
+- Automatic Documentation with Swagger
+- Dependency injection and modular design patterns
+- Type Safety & Clarity
+- Well documented and a large community.
+
+### Testing Strategy:
+
+- Extensive use of unit tests for testing individual functions / components.
+- CI / CD pipeline configured to block deployments on test failures.
+- Development and Staging environments for additional testing and verification.
+- Performance and load testing to simulate expected traffic and observe how the system behaves.
+- Integrations tests. Especially important if other microservices are developed that interract with the temperature service.
+
 ### Managing Data:
 
 A system’s design depends on its scale. A system that processes less than a thousand requests per second is fundamentally different from one that processes millions of request per second.
